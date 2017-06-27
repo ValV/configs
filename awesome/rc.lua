@@ -591,7 +591,7 @@ end
 
 -- Display all accessible global vaiables.
 display_globals = function ()
-	result = {}
+	local result = {}
 	for k, v in pairs(_G) do
 		result[#result+1] = string.format("%-16s %s", k, tostring(v))
 	end
