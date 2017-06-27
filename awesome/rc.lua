@@ -578,3 +578,27 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+-- {{{ Custom functions
+-- Override print function to display messages via 'naughty' plugin as:
+-- print ('Title', 'Text line 1', 'Text line 2', ...)
+
+print = function (msg, ...)
+	naughty.notify({ preset = naughty.config.presets.low,
+			 title = msg,
+			 text = table.concat({...}, '\n') })
+end
+
+-- Display all accessible global vaiables.
+display_globals = function ()
+	result = {}
+	for k, v in pairs(_G) do
+		result[#result+1] = string.format("%-16s %s", k, tostring(v))
+	end
+	table.sort(result)
+	naughty.notify({ timeout = 0,
+			 title = "Globals",
+			 text = table.concat(result, '\n'),
+			 font = "Monospace 7",})
+end
+-- }}}
