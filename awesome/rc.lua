@@ -281,6 +281,11 @@ globalkeys = gears.table.join(
             end
         end,
         {description = "go back", group = "client"}),
+    awful.key({ "Mod1",            }, "Tab",
+        function ()
+            awful.client.focus.history.previous()
+        end,
+        {description = "focus back", group = "client"}),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
