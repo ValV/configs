@@ -14,3 +14,4 @@ help:
 install:
 	@cp -v rc.lua \
 $${$(I):-"$$$(H)"/.config}/$(A)/$${$(P):+$${$(P)%-}-}rc$${$(S):+-$${$(S)#-}}.lua
+	@cp -rv functions $${$(I):-"$$$(H)"/.config}/$(A)/
