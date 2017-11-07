@@ -417,7 +417,7 @@ for i = 1, 9 do
                            tag:view_only()
                         end
                   end,
-                  {description = "view tag #"..i, group = "tag"}),
+                  {description = "view tag #" .. i, group = "tag"}),
         -- Toggle tag display.
         awful.key({ modkey, "Control" }, "#" .. i + 9,
                   function ()
@@ -452,6 +452,64 @@ for i = 1, 9 do
                   {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
+
+-- Custom bindings
+globalkeys = gears.table.join(globalkeys,
+    awful.key({                   }, "KP_End", -- KP_1, #87
+        function ()
+            awful.placement.align(client.focus, { position = "bottom_left" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window bottom left", group = "alignment"}),
+    awful.key({                   }, "KP_Down", -- KP_2, #88
+        function ()
+            awful.placement.align(client.focus, { position = "bottom" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window bottom", group = "alignment"}),
+    awful.key({                   }, "KP_Next", -- KP_3, #89
+        function ()
+            awful.placement.align(client.focus, { position = "bottom_right" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window bottom_right", group = "alignment"}),
+    awful.key({                   }, "KP_Left", -- KP_4, #83
+        function ()
+            awful.placement.align(client.focus, { position = "left" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window left", group = "alignment"}),
+    awful.key({                   }, "KP_Begin", -- KP_5, #84
+        function ()
+            awful.placement.align(client.focus, { position = "centered" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window centered", group = "alignment"}),
+    awful.key({                   }, "KP_Right", -- KP_6, #85
+        function ()
+            awful.placement.align(client.focus, { position = "right" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window right", group = "alignment"}),
+    awful.key({                   }, "KP_Home", -- KP_7, #79
+        function ()
+            awful.placement.align(client.focus, { position = "top_left" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window top left", group = "alignment"}),
+    awful.key({                   }, "KP_Up", -- KP_8, #80
+        function ()
+            awful.placement.align(client.focus, { position = "top" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window top", group = "alignment"}),
+    awful.key({                   }, "KP_Prior", -- KP_9, #81
+        function ()
+            awful.placement.align(client.focus, { position = "top_right" })
+            awful.placement.no_offscreen(client.focus)
+        end ,
+        {description = "align window top right", group = "alignment"})
+)
 
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
