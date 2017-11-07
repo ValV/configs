@@ -453,59 +453,67 @@ for i = 1, 9 do
     )
 end
 
--- Custom bindings
+-- Custom window alignment bindings.
+-- Used numeric pad keys from 1 to 9 (Num Lock off).
+-- +--------------------------------------------------------+
+-- | top_left (7)     |      top(8)      |    top right (9) |
+-- +--------------------------------------------------------+
+-- | left (4)         |    center (5)    |        right (6) |
+-- +------------------+------------------+------------------+
+-- | bottom left (1)  |    bottom (2)    | bottom right (3) |
+-- +--------------------------------------------------------+
 globalkeys = gears.table.join(globalkeys,
     awful.key({                   }, "KP_End", -- KP_1, #87
         function ()
-            awful.placement.align(client.focus, { position = "bottom_left" })
+            awful.placement.bottom_left(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window bottom left", group = "alignment"}),
     awful.key({                   }, "KP_Down", -- KP_2, #88
         function ()
-            awful.placement.align(client.focus, { position = "bottom" })
+            awful.placement.bottom(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window bottom", group = "alignment"}),
     awful.key({                   }, "KP_Next", -- KP_3, #89
         function ()
-            awful.placement.align(client.focus, { position = "bottom_right" })
+            awful.placement.bottom_right(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window bottom_right", group = "alignment"}),
     awful.key({                   }, "KP_Left", -- KP_4, #83
         function ()
-            awful.placement.align(client.focus, { position = "left" })
+            awful.placement.left(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window left", group = "alignment"}),
     awful.key({                   }, "KP_Begin", -- KP_5, #84
         function ()
-            awful.placement.align(client.focus, { position = "centered" })
+            awful.placement.centered(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window centered", group = "alignment"}),
     awful.key({                   }, "KP_Right", -- KP_6, #85
         function ()
-            awful.placement.align(client.focus, { position = "right" })
+            awful.placement.right(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window right", group = "alignment"}),
     awful.key({                   }, "KP_Home", -- KP_7, #79
         function ()
-            awful.placement.align(client.focus, { position = "top_left" })
+            awful.placement.top_left(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window top left", group = "alignment"}),
     awful.key({                   }, "KP_Up", -- KP_8, #80
         function ()
-            awful.placement.align(client.focus, { position = "top" })
+            awful.placement.top(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window top", group = "alignment"}),
     awful.key({                   }, "KP_Prior", -- KP_9, #81
         function ()
-            awful.placement.align(client.focus, { position = "top_right" })
+            awful.placement.top_right(client.focus)
             awful.placement.no_offscreen(client.focus)
         end ,
         {description = "align window top right", group = "alignment"})
