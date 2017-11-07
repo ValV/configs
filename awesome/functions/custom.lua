@@ -12,7 +12,9 @@ function help.show()
 		result[#result + 1] = string.format("%-16s %s", k, tostring(v))
 	end
 	table.sort(result)
-	local text = "Call: help.<name>()\n---\n"
+	local text = "Call: help.<name>()\n" ..
+	             "Old help table is now __help\n" ..
+		     "---\n"
 	text = text .. table.concat(result, '\n')
 	naughty.notify({ timeout = 0, title = "Help functions:",
 			 text = text, font = "Monospace 9"})
