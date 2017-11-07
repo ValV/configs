@@ -167,9 +167,14 @@ local tasklist_buttons = gears.table.join(
                                           end))
 
 local function set_wallpaper(s)
-    -- Wallpaper
-    if beautiful.wallpaper then
-        local wallpaper = beautiful.wallpaper
+    -- Wallpaper in .config directory overrides theme's default
+    local wallpaper = gears.filesystem.get_configuration_dir()
+                      .. "awesome.wallpaper"
+    if gears.filesystem.file_readable(wallpaper) then
+        -- TODO: Check if the wallpaper has proper format
+        gears.wallpaper.maximized(wallpaper, s, false)
+    elseif beautiful.wallpaper then
+        wallpaper = beautiful.wallpaper
         -- If wallpaper is a function, call it with the screen
         if type(wallpaper) == "function" then
             wallpaper = wallpaper(s)

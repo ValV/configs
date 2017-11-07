@@ -16,4 +16,4 @@ install:
 	@CFG=$${$(I):-"$$$(H)"/.config}
 	@FILE=$${$(P):+$${$(P)%-}-}rc$${$(S):+-$${$(S)#-}}.lua
 	@cp -v rc.lua $$CFG/$(A)/$$FILE
-	@cp -rv functions $${$(I):-"$$$(H)"/.config}/$(A)/
+	@cp -rv --parents functions/*.lua $${$(I):-"$$$(H)"/.config}/$(A)/
