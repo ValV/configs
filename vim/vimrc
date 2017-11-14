@@ -1,0 +1,29 @@
+syntax on
+set autoindent
+
+" GnuPG file encryption from http://vim.wikia.com/wiki/Encryption
+augroup file.gpg
+  autocmd!
+
+  " Avoid ~/.viminfo, swap, backup, and undo
+  autocmd BufReadPre,FileReadPre *.file.gpg set viminfo=
+  autocmd BufReadPre,FileReadPre *.file.gpg set noswapfile nobackup noundofile
+
+  " Read as binary and decrypt
+  autocmd BufReadPre,FileReadPre *.file.gpg set binary
+  autocmd BufReadPre,FileReadPre *.file.gpg let ch_save=&ch | set ch=2
+
+  autocmd BufReadPost,FileReadPost *.file.gpg '[,']!gpg -d 2>/dev/null
+
+  " Re-read as text and edit
+  autocmd BufReadPost,FileReadPost *.file.gpg set nobinary
+  autocmd BufReadPost,FileReadPost *.file.gpg let &ch=ch_save | unlet ch_save
+  autocmd BufReadPost,FileReadPost *.file.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+
+  " Encrypt and write
+  autocmd BufWritePre,FileWritePre *.file.gpg '[,']!gpg -ae --default-recipient-self 2>/dev/null
+
+  autocmd BufWritePost,FileWritePost *.file.gpg u
+augroup END
+
+" vim: set ai et ts=4 sts=2 sw=2 syntax=vim
