@@ -19,7 +19,7 @@ function help.show()
     naughty.notify({ timeout = 0,
                      title = "Help functions:",
                      text = text,
-                     font = "Monospace 9"})
+                     font = "Monospace Regular 9"})
 end
 
 -- Print function to display messages via 'naughty' plugin:
@@ -42,7 +42,7 @@ function help.display_globals()
     naughty.notify({ timeout = 0,
                      title = "Globals",
                      text = table.concat(result, '\n'),
-                     font = "Monospace 7"})
+                     font = "Monospace Regular 7"})
 end
 
 -- DIsplay known clients' parameters
@@ -60,7 +60,7 @@ function help.display_clients(s)
     naughty.notify({ timeout = 0,
                      title = "Clients (windows):",
                      text = table.concat(result, '\n'),
-                     font = "Monospace 8"})
+                     font = "Monospace Regular 8"})
 end
 
 setmetatable(help, {__call = help.show})
