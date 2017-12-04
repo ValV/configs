@@ -662,3 +662,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 -- {{{ Custom functions
 require("functions.custom")
 -- }}}
+
+-- vim: set number si et ts=2 sw=2 syntax=lua:

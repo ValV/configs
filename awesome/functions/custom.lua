@@ -64,3 +64,5 @@ function help.display_clients(s)
 end
 
 setmetatable(help, {__call = help.show})
+
+-- vim: set number si et ts=2 sw=2 syntax=lua:
